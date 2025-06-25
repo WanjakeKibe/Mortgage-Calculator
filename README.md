@@ -3,20 +3,20 @@ An interactive mortgage calculator web app that helps users estimate their month
 
 <!-- You can replace this with your hosted image path -->
 
-🚀 Features
-📥 Input: Mortgage amount, term (years), interest rate (%)
+Features
+ Input: Mortgage amount, term (years), interest rate (%)
 
-✅ Selectable mortgage types: Repayment or Interest-Only
+ Selectable mortgage types: Repayment or Interest-Only
 
-📊 Dynamic calculation of:
+ Dynamic calculation of:
 
 Monthly repayments
 
 Total repayment over the term
 
-💡 Responsive, clean UI with Tailwind CSS
+ Responsive, clean UI with Tailwind CSS
 
-💻 Built entirely with HTML, JavaScript, and TailwindCSS
+Built entirely with HTML, JavaScript, and TailwindCSS
 
 🛠 Tech Stack
 HTML5

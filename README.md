@@ -19,9 +19,9 @@ Total repayment over the term
 Built entirely with HTML, JavaScript, and TailwindCSS
 
 🛠 Tech Stack
-HTML5
+HTM
 
-Tailwind CSS (CDN)
+CSS 
 
 Vanilla JavaScript
 

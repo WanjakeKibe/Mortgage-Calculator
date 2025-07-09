@@ -4,73 +4,203 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mortgage Calculator</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #eff6ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1.5rem;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      max-width: 960px;
+      width: 100%;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row;
+      }
+    }
+
+    .left,
+    .right {
+      padding: 1.5rem;
+      flex: 1;
+    }
+
+    .left {
+      background-color: white;
+    }
+
+    .right {
+      background-color: #0f172a;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      display: block;
+      color: #374151;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-end;
+    }
+
+    .half {
+      flex: 1;
+    }
+
+    .radio-group {
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .radio-group label {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .button {
+      background-color: #facc15;
+      color: black;
+      padding: 0.75rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #eab308;
+    }
+
+    .result {
+      border-top: 1px solid #facc15;
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+
+    .result p {
+      margin: 0.5rem 0;
+    }
+
+    .monthly {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fde68a;
+    }
+
+    .total {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    .text-muted {
+      color: #94a3b8;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
-<body class="bg-blue-50 min-h-screen flex items-center justify-center p-6">
+<body>
 
-  <div class="bg-white flex flex-col md:flex-row rounded-xl shadow-lg overflow-hidden max-w-4xl w-full">
+  <div class="container">
     <!-- Left Side: Calculator Form -->
-    <div class="w-full md:w-1/2 p-6 space-y-4">
-      <h2 class="text-xl font-semibold text-gray-800">Mortgage Calculator</h2>
-      
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Mortgage Amount</label>
-        <input type="number" id="amount" value="300000" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-      </div>
-      
-      <div class="flex space-x-4">
-        <div class="flex-1">
-          <label class="block text-sm font-medium text-gray-700">Mortgage Term</label>
-          <input type="number" id="term" value="25" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+    <div class="left">
+      <h2>Mortgage Calculator</h2>
+
+      <label for="amount">Mortgage Amount</label>
+      <input type="number" id="amount" value="300000" />
+
+      <div class="row">
+        <div class="half">
+          <label for="term">Mortgage Term</label>
+          <input type="number" id="term" value="25" />
         </div>
-        <div class="flex items-end">
-          <span class="text-gray-600">years</span>
-        </div>
-        <div class="flex-1">
-          <label class="block text-sm font-medium text-gray-700">Interest Rate</label>
-          <input type="number" id="rate" step="0.01" value="5.25" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-        </div>
-        <div class="flex items-end">
-          <span class="text-gray-600">%</span>
+        <div>
+          <span>years</span>
         </div>
       </div>
 
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Mortgage Type</label>
-        <div class="mt-2 space-y-2">
-          <label class="inline-flex items-center">
-            <input type="radio" name="mortgageType" value="repayment" checked class="form-radio text-yellow-500" />
-            <span class="ml-2">Repayment</span>
-          </label>
-          <br />
-          <label class="inline-flex items-center">
-            <input type="radio" name="mortgageType" value="interest-only" class="form-radio text-yellow-500" />
-            <span class="ml-2">Interest Only</span>
-          </label>
+      <div class="row">
+        <div class="half">
+          <label for="rate">Interest Rate</label>
+          <input type="number" id="rate" step="0.01" value="5.25" />
+        </div>
+        <div>
+          <span>%</span>
         </div>
       </div>
 
-      <button onclick="calculate()" class="mt-4 w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded">
-        Calculate Repayments
-      </button>
+      <label>Mortgage Type</label>
+      <div class="radio-group">
+        <label><input type="radio" name="mortgageType" value="repayment" checked /> Repayment</label>
+        <label><input type="radio" name="mortgageType" value="interest-only" /> Interest Only</label>
+      </div>
+
+      <button onclick="calculate()" class="button">Calculate Repayments</button>
     </div>
 
     <!-- Right Side: Results -->
-    <div class="w-full md:w-1/2 bg-slate-900 text-white p-6 flex flex-col justify-center">
-      <h2 class="text-lg font-semibold mb-4">Your results</h2>
-      <p class="text-sm text-slate-300 mb-4">Your results are shown below based on the information you provided.</p>
-      <div class="border-t border-yellow-400 pt-4">
-        <p class="text-sm">Your monthly repayments</p>
-        <p id="monthlyRepayment" class="text-3xl font-bold text-yellow-300 mt-1">£1,797.74</p>
+    <div class="right">
+      <h2>Your results</h2>
+      <p class="text-muted">Your results are shown below based on the information you provided.</p>
+
+      <div class="result">
+        <p>Your monthly repayments</p>
+        <p id="monthlyRepayment" class="monthly">Ksh1,797.74</p>
       </div>
-      <div class="mt-6 border-t border-slate-700 pt-4">
-        <p class="text-sm">Total you'll repay over the term</p>
-        <p id="totalRepayment" class="text-lg font-semibold text-white">£539,322.94</p>
+
+      <div class="result">
+        <p>Total you'll repay over the term</p>
+        <p id="totalRepayment" class="total">Ksh539,322.94</p>
       </div>
     </div>
   </div>
 
   <script>
+    function formatCurrency(num) {
+      return `Ksh${num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+    }
+
     function calculate() {
       const amount = parseFloat(document.getElementById("amount").value);
       const term = parseFloat(document.getElementById("term").value);
@@ -83,17 +213,19 @@
       let monthlyPayment, totalPayment;
 
       if (type === "repayment") {
-        // Mortgage Repayment Formula (Amortized Loan)
-        monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months));
+        if (rate === 0) {
+          monthlyPayment = amount / months;
+        } else {
+          monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months));
+        }
         totalPayment = monthlyPayment * months;
       } else {
-        // Interest-Only Mortgage
         monthlyPayment = amount * monthlyRate;
         totalPayment = monthlyPayment * months;
       }
 
-      document.getElementById("monthlyRepayment").textContent = `£${monthlyPayment.toFixed(2)}`;
-      document.getElementById("totalRepayment").textContent = `£${totalPayment.toFixed(2)}`;
+      document.getElementById("monthlyRepayment").textContent = formatCurrency(monthlyPayment);
+      document.getElementById("totalRepayment").textContent = formatCurrency(totalPayment);
     }
 
     window.onload = calculate;

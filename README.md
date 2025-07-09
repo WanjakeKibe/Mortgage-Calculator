@@ -14,9 +14,9 @@ Monthly repayments
 
 Total repayment over the term
 
- Responsive, clean UI with Tailwind CSS
+ Responsive, clean UI with CSS
 
-Built entirely with HTML, JavaScript, and TailwindCSS
+Built entirely with HTML, JavaScript, and CSS
 
 🛠 Tech Stack
 HTM
